@@ -13,8 +13,11 @@ type TableOfContentsProps = ReturnType<typeof useTableOfContents>;
 //      item_3_1
 //  item_4
 
-export const TableOfContents: FC<TableOfContentsProps> = ({ items, onClick }) => (
+
+
+export const TableOfContents: FC<TableOfContentsProps> = ({ items, onClick, expandOrCollapseAll, isExpandedAll }) => (
     <div>
+        <button onClick={expandOrCollapseAll}>{isExpandedAll ? 'Collapse All' : 'Expand All'}</button>
         {items.map((item) => (
             <div key={item.id} style={{ display: 'flex' }}>
                 <div style={{ width: item.level * 20, height: 10 }} />
@@ -23,3 +26,4 @@ export const TableOfContents: FC<TableOfContentsProps> = ({ items, onClick }) =>
         ))}
     </div>
 );
+
